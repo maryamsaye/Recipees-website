@@ -1,48 +1,52 @@
 const fetchMealData = async () => {
     try {
         const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s=Chicken');
+        
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
+        
         const data = await response.json();
 
-
-        if (data.chicken) {
-            displaychicken(data.chicken);
+        if (data.meals) {
+            displayChicken(data.meals);
         } else {
             console.log('No chicken found');
         }
     } catch (error) {
-        console.error('Error fetching meal data:',);
+        console.error('Error fetching meal data:', error);
     }
 };
 
-const displaychicken = (chicken) => {
+const displayChicken = (meals) => {
     const chickenContainer = document.getElementById('chicken');
-    chickenContainer.innerHTML = ``;
+    
+    chickenContainer.innerHTML = '';
 
-    chicken.forEach(meal => {
-        const mealCardList = document.createElement('div');
-        mealCardList.classList.add(meal-card);
-
+    meals.forEach(meal => {
+        const mealCard = document.createElement('div');
+        mealCard.classList.add('meal-card');
 
         const mealImage = document.createElement('img');
         mealImage.src = meal.strMealThumb;
         mealImage.classList.add('image');
-        card.appendChild(mealImage);
+        mealImage.alt = meal.strMeal; 
+        mealCard.appendChild(mealImage);
 
-        const mealName = document.createElement('h2');
-        mealName.classList.add('meal-title');
-        mealName.textContent.add = meal.strMeal;
-        card.appendChild(mealName);
+        const mealTitle = document.createElement('h2');
+        mealTitle.classList.add('meal-title');
+        mealTitle.textContent = meal.strMeal; 
+        mealCard.appendChild(mealTitle);
 
-        const mealMethod = document.createElement('p');
-        mealMethod.classList.add('meal-description');
-        mealMethod.innerHTML = meal.strInstructions.substring(0, 100).replace(/\n/g, '<br>') + '...';
-        card.appendChild(mealMethod);
+        const mealDescription = document.createElement('p');
+        mealDescription.classList.add('meal-description');
+        mealDescription.textContent = meal.strInstructions.substring(0, 100) + '...'; 
+        mealCard.appendChild(mealDescription);
 
-        const ingredientList = document.getElementById('ul');
-        ingredientList.classList.add('meal-ingredients');
+        
+        const mealIngredients = document.createElement('ul');
+        mealIngredients.classList.add('meal-ingredients');
+
 
         for (let i = 1; i <= 5; i++) {
             const ingredient = meal[`strIngredient${i}`];
@@ -50,24 +54,21 @@ const displaychicken = (chicken) => {
 
             if (ingredient && measure) {
                 const ingredientItem = document.createElement('li');
-                ingredientItem.textContent = `${ingredient} - ${measure}`;
-                ingredientList.appendChild(ingredientItem);
-
+                ingredientItem.textContent = `${ingredient} - ${measure}`; 
+                mealIngredients.appendChild(ingredientItem);
             }
         }
-        card.appendChild(ingredientList);
-
+        mealCard.appendChild(mealIngredients);
 
         const watchVideoLink = document.createElement('a');
         watchVideoLink.href = meal.strYoutube;
         watchVideoLink.target = '_blank';
-        watchVideoLink.textContent = 'watch video';
-        card.appendChild(watchVideoLink);
+        watchVideoLink.classList.add('meal-video');
+        watchVideoLink.textContent = 'Watch video';
+        mealCard.appendChild(watchVideoLink);
 
 
-        mealCardList.appendChild(card)
-        chickenContainer.appendChild(mealCardList);
-
+        chickenContainer.appendChild(mealCard);
     });
 };
 
