@@ -65,7 +65,7 @@ This project is built using HTML, CSS and JAVASCRIPT and provides a visually app
 -**Custom Properties**:Utilizes CSS variable for theme colors,making it easy to adjust the overall color scheme.
 
 
--**Modern Typography**:Uses "Montserrat"  Fonts throuhout the project for a modern and clean look.
+-**Modern Typography**:Uses "Arial and Sanserif"  Fonts throuhout the project for a modern and clean look.
 
 
 -**Flexbox Layout**:Ensures elements are properly aligned and spaced,creating a balancced design.
