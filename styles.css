@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 80%;
+    margin: 0;
+    padding: 20px;
+}
+
+h1{
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-left: 90px;
+    font-size: 20px;
+
+}
+.meal-video{
+    display: inline-block;
+    border-radius: 8px;
+    background-color: #ff4757;
+    width: 120px;
+    height: 40px;
+    font-weight: bold;
+    /* padding: 10px 20px; */
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+    margin-left: 45px;
+    font-size: 18px;
+}
+.image{
+    width: 50%;
+    margin-left: 60px;
+    border-radius: 10px;
+    
+}
+.meal-card{
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgb(0,0,0,0.1);
+    padding: 20px; 
+    margin-left: 50px;
+    /* display: grid; */
+    margin-bottom: 25px;
+    max-width: 80%;
+
+}
+.meal-title{
+    font-family: Arial;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+.meal-description{
+    font-family: Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    color: #1A1A1A;
+}
+.meal-ingredients{
+    list-style: none;
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 20px; 
+
+}
+.chicken {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 16px; 
+}
+@media (min-width: 768px) {
+    .chicken {
+    grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (min-width: 1024px) {
+    .chicken {
+    grid-template-columns: repeat(3, 1fr);
+    }
+}
+    
+
+
